@@ -7,14 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.ipfl.data.domains.RelationshipTemp;
-import com.ipfl.services.IpflPLTeamBuilderService;
+import com.ipfl.services.IpflPLRelationshipService;
 
 @RestController
 @RequestMapping("/plRelationship")
 public class IpflPLRelationshipController implements IpflController<RelationshipTemp> {
 	
 	@Autowired
-	IpflPLTeamBuilderService ipflPLTeamBuilderService;
+	IpflPLRelationshipService ipflPLRelationshipService;
 	
 	@Override
 	public List<RelationshipTemp> findAll() {
@@ -32,7 +32,7 @@ public class IpflPLRelationshipController implements IpflController<Relationship
 	public List<RelationshipTemp> create(List<RelationshipTemp> rt) {
 		
 		for(RelationshipTemp rt1:rt) {
-			ipflPLTeamBuilderService.buildTeam(rt1.getStartNode(), rt1.getEndNode(), rt1.getRoles());
+			ipflPLRelationshipService.create(rt1.getStartNode(), rt1.getEndNode(), rt1.getRoles());
 		}
 		return null;
 	}

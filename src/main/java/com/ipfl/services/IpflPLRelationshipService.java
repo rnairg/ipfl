@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.ipfl.data.repositories.PlayerRepository;
 
 @Service("ipflPLTeamBuilderService")
-public class IpflPLTeamBuilderService {
+public class IpflPLRelationshipService {
 	
 	@Autowired
 	private PlayerRepository playerRepository;
@@ -16,7 +16,7 @@ public class IpflPLTeamBuilderService {
 	@Autowired
 	IpflPLTeamDataService ipfltds;
 	
-	public void buildTeam(String playerName, String plteamName, List<String> plroles)
+	public void create(String playerName, String plteamName, List<String> plroles)
 	{
 		playerRepository.createRelationship(playerName, plteamName, plroles);
 	
