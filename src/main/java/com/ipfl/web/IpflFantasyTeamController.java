@@ -24,12 +24,12 @@ public class IpflFantasyTeamController implements IpflController<FantasyTeam> {
 	}
 
 	@Override
-	public FantasyTeam create(FantasyTeam ft) {
+	public List<FantasyTeam> create(List<FantasyTeam> ft) {
 		return iptds.create(ft);
 	}
 
 	@Override
-	public void delete(FantasyTeam ft) {
+	public void delete(List<FantasyTeam> ft) {
 		iptds.create(ft);
 		
 	}

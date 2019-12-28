@@ -11,7 +11,7 @@ import com.ipfl.data.domains.PLTeam;
 import com.ipfl.services.IpflPLTeamDataService;
 
 @RestController
-@RequestMapping("/plteam")
+@RequestMapping("/plTeam")
 public class IpflPLTeamController implements IpflController<PLTeam> {
 	
 	@Autowired
@@ -29,13 +29,13 @@ public class IpflPLTeamController implements IpflController<PLTeam> {
 	}
 
 	@Override
-	public PLTeam create(PLTeam t) {
+	public List<PLTeam> create(List<PLTeam> t) {
 		
 		return ipltds.create(t);
 	}
 
 	@Override
-	public void delete(PLTeam t) {
+	public void delete(List<PLTeam> t) {
 		ipltds.delete(t);
 		
 	}

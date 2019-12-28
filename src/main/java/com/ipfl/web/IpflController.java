@@ -20,8 +20,8 @@ public interface IpflController <T> {
 	Optional<T> findById(@PathVariable int id);
 	
 	@PostMapping("/create")
-	T create(@RequestBody T t);
+	List<T> create(@RequestBody List<T> t);
 	
 	@DeleteMapping("/delete")
-	void delete(@RequestBody T t);
+	void delete(@RequestBody List<T> t);
 }

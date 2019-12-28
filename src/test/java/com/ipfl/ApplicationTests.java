@@ -24,7 +24,7 @@ class ApplicationTests {
 		p.setName("Test Player");
 		p.setNationality("Indian");
 		
-		ipds.create(p);
+		//ipds.create(p);
 	}
 	@Test
 	void testFindById() {

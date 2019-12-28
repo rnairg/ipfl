@@ -1,9 +1,14 @@
 package com.ipfl.data.domains;
 
+import java.util.List;
+
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Property;
+import org.neo4j.ogm.annotation.Relationship;
+
+//import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @NodeEntity (label = "PLTeam")
@@ -15,6 +20,9 @@ public class PLTeam {
 	@Property
 	private String name;
 	
+	//@JsonIgnoreProperties("plteam")
+	@Relationship(type = "PLAYS_FOR", direction= Relationship.INCOMING)
+	private List<Player> players;
 	
 	public PLTeam() {}
 	
@@ -36,6 +44,14 @@ public class PLTeam {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public List<Player> getPlayers() {
+		return players;
+	}
+
+	public void setPlayers(List<Player> players) {
+		this.players = players;
 	}
 	
 }

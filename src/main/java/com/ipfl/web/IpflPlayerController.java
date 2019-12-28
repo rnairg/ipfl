@@ -29,13 +29,13 @@ public class IpflPlayerController implements IpflController<Player> {
 	}
 
 	@Override
-	public Player create(Player p) {
+	public List<Player> create(List<Player> p) {
 		
 		return ipds.create(p);
 	}
 
 	@Override
-	public void delete(Player p) {
+	public void delete(List<Player> p) {
 		
 		ipds.delete(p);	
 	}

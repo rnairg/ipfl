@@ -1,11 +1,12 @@
 package com.ipfl.services;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface IpflDataService <T>{
 	
-	T create (T t);
-	void delete (T t);
+	List<T> create (List<T> t);
+	void delete (List<T> t);
 	Optional<T> findById(long id);
 	Iterable<T> findAll();
 }

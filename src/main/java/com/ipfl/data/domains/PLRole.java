@@ -1,6 +1,7 @@
 package com.ipfl.data.domains;
 
-import java.util.Set;
+import java.util.List;
+
 
 import org.neo4j.ogm.annotation.EndNode;
 import org.neo4j.ogm.annotation.GeneratedValue;
@@ -20,7 +21,7 @@ public class PLRole {
 Long id;
 
 @Property(name="PLRole")
-private Set<String> plroles;
+private List<String> plroles;
 
 @StartNode
 private Player player;
@@ -32,20 +33,24 @@ public PLRole() {
 	
 }
 
-
-public PLRole(Player player, PLTeam plteam, Set<String> plroles) {
+public PLRole(Player player, PLTeam plteam, List<String> plroles) {
 	super();
 	this.plroles = plroles;
 	this.player = player;
 	this.plteam = plteam;
 }
+public PLRole(PLTeam plteam, List<String> plroles) {
+	super();
+	this.plroles = plroles;
+	this.plteam = plteam;
+}
 
 
-public Set<String> getPlroles() {
+public List<String> getPlroles() {
 	return plroles;
 }
 
-public void setPlroles(Set<String> plroles) {
+public void setPlroles(List<String> plroles) {
 	this.plroles = plroles;
 }
 

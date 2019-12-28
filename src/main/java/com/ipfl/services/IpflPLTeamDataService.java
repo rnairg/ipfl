@@ -1,10 +1,10 @@
 package com.ipfl.services;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.ipfl.data.domains.PLTeam;
 import com.ipfl.data.repositories.PLTeamRepository;
 
@@ -15,14 +15,21 @@ public class IpflPLTeamDataService implements IpflDataService<PLTeam> {
 	PLTeamRepository pLTeamRepository;
 
 	@Override
-	public PLTeam create(PLTeam pt) {
-		return pLTeamRepository.save(pt);
+	public List<PLTeam> create(List<PLTeam> plt) {
+		List<PLTeam> rplt = new ArrayList<>();
+		for(PLTeam plt1 : plt)
+		{
+		  rplt.add(pLTeamRepository.save(plt1));
+		}
+		return rplt;
 	}
 
 	@Override
-	public void delete(PLTeam pt) {
-		pLTeamRepository.delete(pt);
-		
+	public void delete(List<PLTeam> plt) {
+		for(PLTeam plt1 : plt)
+		{
+			pLTeamRepository.delete(plt1);
+		}
 	}
 
 	@Override

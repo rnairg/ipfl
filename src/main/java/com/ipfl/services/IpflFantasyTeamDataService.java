@@ -1,5 +1,7 @@
 package com.ipfl.services;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,13 +15,21 @@ public class IpflFantasyTeamDataService implements IpflDataService<FantasyTeam> 
 	FantasyTeamRepository fantasyTeamRepository;
 
 	@Override
-	public FantasyTeam create(FantasyTeam ft) {
-		return fantasyTeamRepository.save(ft);
+	public List<FantasyTeam> create(List<FantasyTeam> ft) {
+		List<FantasyTeam> rft = new ArrayList<>();
+		for(FantasyTeam ft1 : ft)
+		{
+		  rft.add(fantasyTeamRepository.save(ft1));
+		}
+		return rft;
 	}
 
 	@Override
-	public void delete(FantasyTeam ft) {
-		fantasyTeamRepository.delete(ft);
+	public void delete(List<FantasyTeam> ft) {
+		for(FantasyTeam ft1 : ft)
+		{
+			fantasyTeamRepository.delete(ft1);
+		}
 		
 	}
 
