@@ -16,6 +16,6 @@ public interface PlayerRepository extends Neo4jRepository<Player, Long> {
 	("match (a:Player),(b:PLTeam)"
 			+ "where a.name={playerName} and b.name = {plteamName} "
 			+ "create unique (a)-[r:PLAYS_FOR{PLRole:{plroles}}]->(b)")
-	void createRelationship(@Param("playerName") String playerName, @Param("plteamName") String plteamName, @Param("plroles") List<String> plroles);
+	void createPLRelationship(@Param("playerName") String playerName, @Param("plteamName") String plteamName, @Param("plroles") List<String> plroles);
 
 }

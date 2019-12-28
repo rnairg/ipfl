@@ -31,9 +31,8 @@ public class IpflPLRelationshipController implements IpflController<Relationship
 	@Override
 	public List<RelationshipTemp> create(List<RelationshipTemp> rt) {
 		
-		for(RelationshipTemp rt1:rt) {
-			ipflPLRelationshipService.create(rt1.getStartNode(), rt1.getEndNode(), rt1.getRoles());
-		}
+			ipflPLRelationshipService.create(rt);
+	
 		return null;
 	}
 
