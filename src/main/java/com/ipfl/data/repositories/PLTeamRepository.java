@@ -1,8 +1,22 @@
 package com.ipfl.data.repositories;
 
 
+
+import org.springframework.data.neo4j.annotation.Query;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
+import org.springframework.data.repository.query.Param;
 
 import com.ipfl.data.domains.PLTeam;
 
-public interface PLTeamRepository extends Neo4jRepository<PLTeam, Long> {}
+public interface PLTeamRepository extends Neo4jRepository<PLTeam, Long> {
+	
+	@Query
+	("match (a:PLTeam),(b:Match)"
+			+ "where a.name={plteamName} and b.name = {matchName} "
+			+ "create unique (a)-[r:PLAYED{Runs:{runs},Wickets:{wickets},Overs:{overs}}]->(b)")
+	void createMatchRelationship(@Param("plteamName") String playerName, @Param("matchName") String plteamName, 
+			@Param("runs") int runs, @Param("wickets") int wickets,@Param("overs") int overs);
+	
+	
+	
+}

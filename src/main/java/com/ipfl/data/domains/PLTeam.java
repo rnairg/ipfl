@@ -8,6 +8,7 @@ import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Property;
 import org.neo4j.ogm.annotation.Relationship;
+import org.neo4j.ogm.annotation.Required;
 
 
 @NodeEntity (label = "PLTeam")
@@ -20,7 +21,12 @@ public class PLTeam {
 	Long id;
 	
 	@Property
+	@Required
 	private String name;
+	
+	@Property
+	@Required
+	private String code;
 	
 	@Relationship(type = "PLAYS_FOR", direction= Relationship.INCOMING)
 	private List<Player> players;
@@ -45,6 +51,10 @@ public class PLTeam {
 
 	public List<Player> getPlayers() {
 		return players;
+	}
+
+	public String getCode() {
+		return code;
 	}
 	
 }

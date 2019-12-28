@@ -3,6 +3,7 @@ package com.ipfl.data.domains;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Property;
 import org.neo4j.ogm.annotation.Relationship;
+import org.neo4j.ogm.annotation.Required;
 
 
 @NodeEntity (label = "Player")
@@ -12,6 +13,7 @@ public class Player extends Person {
 	/*--------------Member Variables----------*/
 
 	@Property
+	@Required
 	private String nationality;
 	
 	@Relationship(type="PLAYS_FOR")

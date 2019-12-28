@@ -34,7 +34,7 @@ public class IpflFantasyTeamController implements IpflController<FantasyTeam> {
 
 	@Override
 	public void delete(List<FantasyTeam> ft) {
-		iptds.create(ft);
+		iptds.delete(ft);
 		
 	}
 }
