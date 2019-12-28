@@ -1,0 +1,5 @@
+spring.data.neo4j.uri=bolt://localhost
+spring.data.neo4j.username=${NEO4J_DEV_USER}
+spring.data.neo4j.password=${NEO4J_DEV_PASS}
+spring.data.neo4j.auto-index= UPDATE
+logging.level.org.neo4j.ogm.drivers.bolt.request.BoltRequest=DEBUG
