@@ -6,6 +6,7 @@ import org.neo4j.ogm.annotation.Relationship;
 
 
 @NodeEntity (label = "Player")
+
 public class Player extends Person {
 
 	@Property

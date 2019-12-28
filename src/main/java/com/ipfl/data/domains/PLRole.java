@@ -2,7 +2,6 @@ package com.ipfl.data.domains;
 
 import java.util.List;
 
-
 import org.neo4j.ogm.annotation.EndNode;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
