@@ -4,10 +4,14 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.ipfl.data.domains.FantasyTeam;
 import com.ipfl.services.IpflFantasyTeamDataService;
 
+@RestController
+@RequestMapping("/fTeam")
 public class IpflFantasyTeamController implements IpflController<FantasyTeam> {
 	
 	@Autowired
@@ -33,7 +37,4 @@ public class IpflFantasyTeamController implements IpflController<FantasyTeam> {
 		iptds.create(ft);
 		
 	}
-
-	
-
 }

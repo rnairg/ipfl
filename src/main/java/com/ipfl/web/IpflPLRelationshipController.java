@@ -37,7 +37,7 @@ public class IpflPLRelationshipController implements IpflController<Relationship
 	}
 
 	@Override
-	public void delete(List<RelationshipTemp> o) {
+	public void delete(List<RelationshipTemp> rt) {
 		// TODO Auto-generated method stub
 		
 	}

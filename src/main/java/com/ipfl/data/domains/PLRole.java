@@ -15,7 +15,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @RelationshipEntity(type = "PLAYS_FOR")
 public class PLRole {
 	
-
+	/*--------------Member Variables----------*/
+	
 @Id @GeneratedValue
 Long id;
 
@@ -27,6 +28,8 @@ private Player player;
 
 @EndNode
 private PLTeam plteam;
+
+/*--------------Constructors----------*/
 
 public PLRole() {
 	
@@ -44,30 +47,18 @@ public PLRole(PLTeam plteam, List<String> plroles) {
 	this.plteam = plteam;
 }
 
+/*--------------Getters----------*/
 
 public List<String> getPlroles() {
 	return plroles;
-}
-
-public void setPlroles(List<String> plroles) {
-	this.plroles = plroles;
 }
 
 public PLTeam getPlteam() {
 	return plteam;
 }
 
-public void setPlteam(PLTeam plteam) {
-	this.plteam = plteam;
-}
-
-
 public Player getPlayer() {
 	return player;
-}
-
-public void setPlayer(Player player) {
-	this.player = player;
 }
 
 }

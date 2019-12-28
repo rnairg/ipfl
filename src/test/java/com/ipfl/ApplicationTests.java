@@ -20,9 +20,9 @@ class ApplicationTests {
 	@Test
 	void testCreate() {
 		
-		Player p = new Player();
-		p.setName("Test Player");
-		p.setNationality("Indian");
+		//Player p = new Player("Test Player","Indian");
+		//p.setName("Test Player");
+		//p.setNationality("Indian");
 		
 		//ipds.create(p);
 	}

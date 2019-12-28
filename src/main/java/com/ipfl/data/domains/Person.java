@@ -9,12 +9,15 @@ import org.neo4j.ogm.annotation.Property;
 @CompositeIndex(value= {"name"},unique = true)
 public class Person {
 	
+	/*--------------Member Variables----------*/
+	
 	@Id @GeneratedValue
 	Long id;
 	
 	@Property
 	private String name;
 	
+	/*--------------Constructors----------*/
 	
 	public Person(){
 		
@@ -24,20 +27,14 @@ public class Person {
 		this.id = id;
 		this.name=name;
 	}
+	
+	/*--------------Getters----------*/
 
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public Long getId() {
 		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 }

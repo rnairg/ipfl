@@ -1,33 +1,62 @@
 package com.ipfl.data.domains;
 
-import java.util.Collection;
+import java.util.List;
+
 import org.neo4j.ogm.annotation.EndNode;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
+import org.neo4j.ogm.annotation.Property;
 import org.neo4j.ogm.annotation.RelationshipEntity;
 import org.neo4j.ogm.annotation.StartNode;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties("player")
 @RelationshipEntity(type = "PICKED_IN")
 public class FRole {
+	
+	/*--------------Member Variables----------*/
+	
 	@Id @GeneratedValue
 	Long id;
-
-	private Collection<String> froles;
+	
+	@Property(name="FRole")
+	private List<String> froles;
 
 	@StartNode
 	private Player player;
 
 	@EndNode
-	private Collection<FantasyTeam> fteam;
+	private FantasyTeam fteam;
 
-	public Collection<String> getFroles() {
+	/*--------------Constructors----------*/
+	
+	public FRole(Long id, List<String> froles, Player player, FantasyTeam fteam) {
+		super();
+		this.id = id;
+		this.froles = froles;
+		this.player = player;
+		this.fteam = fteam;
+	}
+
+	public FRole() {}
+	
+	/*--------------Getters----------*/
+
+	public Long getId() {
+		return id;
+	}
+
+	public List<String> getFroles() {
 		return froles;
 	}
 
-	public void setFroles(Collection<String> froles) {
-		this.froles = froles;
+	public Player getPlayer() {
+		return player;
 	}
-	
-	
+
+	public FantasyTeam getFteam() {
+		return fteam;
+	}
 
 }
