@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.ipfl.data.domains.Person;
-import com.ipfl.data.domains.Player;
-import com.ipfl.services.IpflPlayerDataService;
+import com.ipfl.player.IpflPlayerDataService;
+import com.ipfl.player.Player;
 
 
 @SpringBootTest
