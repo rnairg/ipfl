@@ -14,8 +14,8 @@ public interface PLTeamRepository extends Neo4jRepository<PLTeam, Long> {
 	("match (a:PLTeam),(b:Match)"
 			+ "where a.name={plteamName} and b.name = {matchName} "
 			+ "create unique (a)-[r:PLAYED{Runs:{runs},Wickets:{wickets},Overs:{overs}}]->(b)")
-	void createMatchRelationship(@Param("plteamName") String playerName, @Param("matchName") String plteamName, 
-			@Param("runs") int runs, @Param("wickets") int wickets,@Param("overs") int overs);
+	void createMatchRelationship(@Param("plteamName") String plteamName, @Param("matchName") String matchName, 
+			@Param("runs") int runs, @Param("wickets") int wickets,@Param("overs") float overs);
 	
 	
 	

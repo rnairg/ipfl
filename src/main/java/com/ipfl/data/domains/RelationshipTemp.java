@@ -11,7 +11,8 @@ public class RelationshipTemp {
 	List<String> roles;
 	int runs;
 	int wickets;
-	int overs;
+	float overs;
+	int catches;
 	
 	/*--------------Constructors----------*/
 	
@@ -21,13 +22,22 @@ public class RelationshipTemp {
 		this.endNode = endNode;
 		this.roles = roles;
 	}
-	public RelationshipTemp(String startNode, String endNode, int runs, int wickets, int overs) {
+	public RelationshipTemp(String startNode, String endNode, int runs, int wickets, float overs) {
 		super();
 		this.startNode = startNode;
 		this.endNode = endNode;
 		this.runs = runs;
 		this.wickets = wickets;
 		this.overs = overs;
+	}
+	
+	public RelationshipTemp(String startNode, String endNode, int runs, int wickets, int catches) {
+		super();
+		this.startNode = startNode;
+		this.endNode = endNode;
+		this.runs = runs;
+		this.wickets = wickets;
+		this.catches = catches;
 	}
 
 	public RelationshipTemp() {
@@ -53,8 +63,11 @@ public class RelationshipTemp {
 	public int getWickets() {
 		return wickets;
 	}
-	public int getOvers() {
+	public float getOvers() {
 		return overs;
+	}
+	public int getCatches() {
+		return catches;
 	}
 	
 

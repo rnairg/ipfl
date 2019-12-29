@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ipfl.data.domains.PLTeam;
-import com.ipfl.services.IpflPLTeamDataService;
+import com.ipfl.services.IpflDataService;
 
 @RestController
 @RequestMapping("/plTeam")
 public class IpflPLTeamController implements IpflController<PLTeam> {
 	
 	@Autowired
-	IpflPLTeamDataService ipltds;
+	IpflDataService<PLTeam> ipltds;
 
 	@Override
 	public List<PLTeam> findAll() {

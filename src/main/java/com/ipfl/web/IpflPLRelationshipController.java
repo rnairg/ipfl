@@ -7,14 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.ipfl.data.domains.RelationshipTemp;
-import com.ipfl.services.IpflPLRelationshipService;
+import com.ipfl.services.IpflDataService;
 
 @RestController
 @RequestMapping("/plRelationship")
 public class IpflPLRelationshipController implements IpflController<RelationshipTemp> {
 	
 	@Autowired
-	IpflPLRelationshipService ipflPLRelationshipService;
+	IpflDataService<RelationshipTemp> ipflPLRelationshipService;
 	
 	@Override
 	public List<RelationshipTemp> findAll() {

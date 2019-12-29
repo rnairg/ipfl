@@ -11,11 +11,12 @@ import com.ipfl.data.domains.RelationshipTemp;
 import com.ipfl.services.IpflDataService;
 
 @RestController
-@RequestMapping("/matchRelationship")
-public class IpflMatchRelationshipController implements IpflController<RelationshipTemp> {
+@RequestMapping("/playerMatchRelationship")
+public class IpflPlayerMatchRelationshipController implements IpflController<RelationshipTemp> {
 
 	@Autowired
-	private IpflDataService<RelationshipTemp> ipflMatchRelationshipService;
+	private IpflDataService<RelationshipTemp> ipflPlayerMatchRelationshipService;
+	
 	@Override
 	public List<RelationshipTemp> findAll() {
 		// TODO Auto-generated method stub
@@ -30,12 +31,12 @@ public class IpflMatchRelationshipController implements IpflController<Relations
 
 	@Override
 	public List<RelationshipTemp> create(List<RelationshipTemp> rt) {
-		ipflMatchRelationshipService.create(rt);
+		ipflPlayerMatchRelationshipService.create(rt);
 		return null;
 	}
 
 	@Override
-	public void delete(List<RelationshipTemp> t) {
+	public void delete(List<RelationshipTemp> rt) {
 		// TODO Auto-generated method stub
 		
 	}

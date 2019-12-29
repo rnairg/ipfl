@@ -29,6 +29,9 @@ public class Match {
 	@Relationship(type="PLAYED", direction= Relationship.INCOMING)
 	private PLTeam plTeam;
 	
+	@Relationship(type="PLAYED_IN", direction= Relationship.INCOMING)
+	private Player player;
+	
 	/*--------------Constructors----------*/
 	
 	public Match() {}
@@ -50,6 +53,10 @@ public class Match {
 
 	public PLTeam getPlTeam() {
 		return plTeam;
+	}
+	
+	public Player getPlayer() {
+		return player;
 	}
 
 }

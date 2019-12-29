@@ -7,14 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.ipfl.data.domains.Match;
-import com.ipfl.services.IpflMatchDataService;
+import com.ipfl.services.IpflDataService;
 
 @RestController
 @RequestMapping("/match")
 public class IpflMatchController implements IpflController<Match> {
 	
 	@Autowired
-	IpflMatchDataService ipmds;
+	IpflDataService<Match> ipmds;
 
 	@Override
 	public List<Match> findAll() {

@@ -22,6 +22,9 @@ public class Player extends Person {
 	@Relationship(type="PICKED_IN")
 	private FRole frole;
 	
+	@Relationship(type="PLAYED_IN")
+	private PlayerStats playerStats;
+	
 	/*--------------Constructors----------*/
 
 	public Player() {}
@@ -38,6 +41,10 @@ public class Player extends Person {
 
 	public FRole getFrole() {
 		return frole;
+	}
+	
+	public PlayerStats getPlayerStats() {
+		return playerStats;
 	}
 	
 }

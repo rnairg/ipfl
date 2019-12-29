@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ipfl.data.domains.RelationshipTemp;
-import com.ipfl.services.IpflFRelationshipService;
+import com.ipfl.services.IpflDataService;
 
 @RestController
 @RequestMapping("/fRelationship")
 public class IpflFRelationshipController implements IpflController<RelationshipTemp> {
 
 	@Autowired
-	IpflFRelationshipService ipflFRelationshipService;
+	IpflDataService<RelationshipTemp> ipflFRelationshipService;
 
 	@Override
 	public List<RelationshipTemp> findAll() {

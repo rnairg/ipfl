@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ipfl.data.domains.Player;
-import com.ipfl.services.IpflPlayerDataService;
+import com.ipfl.services.IpflDataService;
 
 @RestController
 @RequestMapping("/player")
 public class IpflPlayerController implements IpflController<Player> {
 	
 	@Autowired
-	IpflPlayerDataService ipds;
+	IpflDataService<Player> ipds;
 	@Override
 	public List<Player> findAll() {
 		
