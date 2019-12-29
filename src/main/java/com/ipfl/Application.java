@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
 @ComponentScan(basePackages = "com.ipfl")
-@EnableNeo4jRepositories(basePackages = "com.ipfl.data.repositories")
+@EnableNeo4jRepositories(basePackages = "com.ipfl")
 @EnableTransactionManagement
 public class Application {
 
