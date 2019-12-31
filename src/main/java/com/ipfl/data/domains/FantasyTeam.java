@@ -31,6 +31,14 @@ public class FantasyTeam {
 	
 	public FantasyTeam() {}
 	
+	
+	/*public FantasyTeam(String name) {
+		super();
+		this.name = name;
+	}*/
+
+
+
 	/*--------------Getters----------*/
 	
 	public List<Player> getPlayers() {

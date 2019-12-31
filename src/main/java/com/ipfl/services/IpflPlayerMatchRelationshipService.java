@@ -6,51 +6,51 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ipfl.data.domains.RelationshipTemp;
+import com.ipfl.data.domains.PlayerStats;
 import com.ipfl.data.repositories.PlayerRepository;
 
 @Service("ipflPlayerMatchRelationshipService")
-public class IpflPlayerMatchRelationshipService implements IpflDataService<RelationshipTemp> {
+public class IpflPlayerMatchRelationshipService implements IpflRelationshipService<PlayerStats> {
 
 	@Autowired
 	PlayerRepository playerRepository;
 	
 	@Override
-	public List<RelationshipTemp> create(List<RelationshipTemp> rt) {
-		for(RelationshipTemp rt1 : rt) {
-			playerRepository.createPlayerMatchRelationship(rt1.getStartNode(),rt1.getEndNode(),rt1.getRuns(),rt1.getWickets(),rt1.getCatches());
+	public List<PlayerStats> create(List<PlayerStats> rt) {
+		for(PlayerStats rt1 : rt) {
+			playerRepository.createPlayerMatchRelationship(rt1.getPlayer().getName(),rt1.getMatch().getName(),rt1.getRuns(),rt1.getWickets(),rt1.getCatches());
 		}
 		return null;
 	}
 
 	@Override
-	public void delete(List<RelationshipTemp> rt) {
+	public void delete(List<PlayerStats> rt) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public Optional<RelationshipTemp> findById(long id) {
+	public Optional<PlayerStats> findById(long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Iterable<RelationshipTemp> findAll() {
+	public Iterable<PlayerStats> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Optional<RelationshipTemp> findByName(String name) {
+	public Optional<PlayerStats> findByName(String name) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void update(List<RelationshipTemp> t) {
+	public List<PlayerStats> update(List<PlayerStats> t) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 }

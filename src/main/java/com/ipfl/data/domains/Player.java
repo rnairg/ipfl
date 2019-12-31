@@ -7,6 +7,8 @@ import org.neo4j.ogm.annotation.Property;
 import org.neo4j.ogm.annotation.Relationship;
 import org.neo4j.ogm.annotation.Required;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 @NodeEntity (label = "Player")
 
@@ -18,24 +20,30 @@ public class Player extends Person {
 	@Required
 	private String nationality;
 	
+	@JsonIgnoreProperties("player")
 	@Relationship(type="PLAYS_FOR")
 	private PLRole plrole;
 	
+	@JsonIgnoreProperties("player")
 	@Relationship(type="PICKED_IN")
 	private List<FRole> frole;
 	
+	@JsonIgnoreProperties("player")
 	@Relationship(type="PLAYED_IN")
 	private List<PlayerStats> playerStats;
 	
 	/*--------------Constructors----------*/
 
-	public Player() {}
+	public Player() {
+		super();
+	}
 
 	/*--------------Getters----------*/
 
 	public String getNationality() {
 		return nationality;
 	}
+
 
 	public PLRole getPlrole() {
 		return plrole;
@@ -48,5 +56,7 @@ public class Player extends Person {
 	public List<PlayerStats> getPlayerStats() {
 		return playerStats;
 	}
+	
+	
 	
 }

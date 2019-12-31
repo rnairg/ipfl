@@ -17,12 +17,17 @@ public class Person {
 	
 	@Property
 	@Required
-	private String name;
+	protected String name;
 	
 	/*--------------Constructors----------*/
 	
 	public Person(){}
 	
+	public Person(String name) {
+		super();
+		this.name = name;
+	}
+
 	/*--------------Getters----------*/
 
 	public String getName() {

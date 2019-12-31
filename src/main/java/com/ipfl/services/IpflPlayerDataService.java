@@ -19,6 +19,7 @@ public class IpflPlayerDataService implements IpflDataService<Player> {
 		List<Player> rp = new ArrayList<>();
 		for(Player p1 : p)
 		{
+		  System.out.println(p1.getName());
 		  rp.add(playerRepository.save(p1));
 		}
 		return rp;
