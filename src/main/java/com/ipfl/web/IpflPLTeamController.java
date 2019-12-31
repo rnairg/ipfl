@@ -40,4 +40,15 @@ public class IpflPLTeamController implements IpflController<PLTeam> {
 		
 	}
 
+	@Override
+	public Optional<PLTeam> findByName(String name) {
+		return ipltds.findByName(name);
+	}
+
+	@Override
+	public void update(List<PLTeam> t) {
+		ipltds.update(t);
+		
+	}
+
 }

@@ -30,14 +30,6 @@ public class FRole {
 	private FantasyTeam fteam;
 
 	/*--------------Constructors----------*/
-	
-	public FRole(Long id, List<String> froles, Player player, FantasyTeam fteam) {
-		super();
-		this.id = id;
-		this.froles = froles;
-		this.player = player;
-		this.fteam = fteam;
-	}
 
 	public FRole() {}
 	

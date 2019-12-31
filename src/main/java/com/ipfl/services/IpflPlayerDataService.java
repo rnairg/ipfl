@@ -28,7 +28,10 @@ public class IpflPlayerDataService implements IpflDataService<Player> {
 	public void delete(List<Player> p) {
 		for(Player p1 : p)
 		{
-			playerRepository.delete(p1);
+			 
+			playerRepository.delete(
+									playerRepository.findByName(p1.getName()).get()
+									);
 		}
 		
 	}
@@ -43,6 +46,21 @@ public class IpflPlayerDataService implements IpflDataService<Player> {
 	public Iterable<Player> findAll() {
 		
 		return playerRepository.findAll();
+	}
+
+	@Override
+	public Optional<Player> findByName(String name) {
+
+		return playerRepository.findByName(name);
+	}
+
+	@Override
+	public void update(List<Player> p) {
+		for(Player p1 : p)
+		{
+		  playerRepository.save(p1);
+		}
+		
 	}
 
 }

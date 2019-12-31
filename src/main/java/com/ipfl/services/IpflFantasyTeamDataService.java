@@ -28,7 +28,9 @@ public class IpflFantasyTeamDataService implements IpflDataService<FantasyTeam> 
 	public void delete(List<FantasyTeam> ft) {
 		for(FantasyTeam ft1 : ft)
 		{
-			fantasyTeamRepository.delete(ft1);
+			fantasyTeamRepository.delete(
+					fantasyTeamRepository.findByName(ft1.getName()).get()
+					);
 		}
 		
 	}
@@ -41,6 +43,20 @@ public class IpflFantasyTeamDataService implements IpflDataService<FantasyTeam> 
 	@Override
 	public Iterable<FantasyTeam> findAll() {
 		return fantasyTeamRepository.findAll();
+	}
+
+	@Override
+	public Optional<FantasyTeam> findByName(String name) {
+		return fantasyTeamRepository.findByName(name);
+	}
+
+	@Override
+	public void update(List<FantasyTeam> ft) {
+		for(FantasyTeam ft1 : ft)
+		{
+		  fantasyTeamRepository.save(ft1);
+		}
+		
 	}
 
 }

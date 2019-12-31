@@ -41,4 +41,16 @@ public class IpflPlayerMatchRelationshipService implements IpflDataService<Relat
 		return null;
 	}
 
+	@Override
+	public Optional<RelationshipTemp> findByName(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void update(List<RelationshipTemp> t) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

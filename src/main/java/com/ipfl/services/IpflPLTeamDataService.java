@@ -28,7 +28,9 @@ public class IpflPLTeamDataService implements IpflDataService<PLTeam> {
 	public void delete(List<PLTeam> plt) {
 		for(PLTeam plt1 : plt)
 		{
-			pLTeamRepository.delete(plt1);
+			pLTeamRepository.delete(
+					pLTeamRepository.findByName(plt1.getName()).get()
+					);
 		}
 	}
 
@@ -40,6 +42,20 @@ public class IpflPLTeamDataService implements IpflDataService<PLTeam> {
 	@Override
 	public Iterable<PLTeam> findAll() {
 		return pLTeamRepository.findAll();
+	}
+
+	@Override
+	public Optional<PLTeam> findByName(String name) {
+		return pLTeamRepository.findByName(name);
+	}
+
+	@Override
+	public void update(List<PLTeam> plt) {
+		for(PLTeam plt1 : plt)
+		{
+		  pLTeamRepository.save(plt1);
+		}
+		
 	}
 
 }

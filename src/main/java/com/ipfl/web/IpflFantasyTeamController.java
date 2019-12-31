@@ -37,4 +37,15 @@ public class IpflFantasyTeamController implements IpflController<FantasyTeam> {
 		iptds.delete(ft);
 		
 	}
+
+	@Override
+	public Optional<FantasyTeam> findByName(String name) {
+		return iptds.findByName(name);
+	}
+
+	@Override
+	public void update(List<FantasyTeam> ft) {
+		iptds.update(ft);
+		
+	}
 }

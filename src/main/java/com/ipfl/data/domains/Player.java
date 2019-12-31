@@ -1,5 +1,7 @@
 package com.ipfl.data.domains;
 
+import java.util.List;
+
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Property;
 import org.neo4j.ogm.annotation.Relationship;
@@ -20,10 +22,10 @@ public class Player extends Person {
 	private PLRole plrole;
 	
 	@Relationship(type="PICKED_IN")
-	private FRole frole;
+	private List<FRole> frole;
 	
 	@Relationship(type="PLAYED_IN")
-	private PlayerStats playerStats;
+	private List<PlayerStats> playerStats;
 	
 	/*--------------Constructors----------*/
 
@@ -39,11 +41,11 @@ public class Player extends Person {
 		return plrole;
 	}
 
-	public FRole getFrole() {
+	public List<FRole> getFrole() {
 		return frole;
 	}
 	
-	public PlayerStats getPlayerStats() {
+	public List<PlayerStats> getPlayerStats() {
 		return playerStats;
 	}
 	

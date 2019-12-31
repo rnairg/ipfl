@@ -1,6 +1,7 @@
 package com.ipfl.data.domains;
 
 import java.util.Date;
+import java.util.List;
 
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
@@ -27,16 +28,15 @@ public class Match {
 	private Date matchDate;
 	
 	@Relationship(type="PLAYED", direction= Relationship.INCOMING)
-	private PLTeam plTeam;
+	private List<PLTeam> plTeam;
 	
 	@Relationship(type="PLAYED_IN", direction= Relationship.INCOMING)
-	private Player player;
+	private List<Player> player;
 	
 	/*--------------Constructors----------*/
 	
 	public Match() {}
 
-	
 	/*--------------Getters----------*/
 
 	public Long getId() {
@@ -51,11 +51,11 @@ public class Match {
 		return matchDate;
 	}
 
-	public PLTeam getPlTeam() {
+	public List<PLTeam> getPlTeam() {
 		return plTeam;
 	}
 	
-	public Player getPlayer() {
+	public List<Player> getPlayer() {
 		return player;
 	}
 

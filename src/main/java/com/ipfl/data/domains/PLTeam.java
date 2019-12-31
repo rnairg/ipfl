@@ -34,11 +34,7 @@ public class PLTeam {
 	/*--------------Constructors----------*/
 	
 	public PLTeam() {}
-	
-	public PLTeam(Long id) {
-		this.id=id;
-	}
-	
+		
 	/*--------------Getters----------*/
 	
 	public Long getId() {

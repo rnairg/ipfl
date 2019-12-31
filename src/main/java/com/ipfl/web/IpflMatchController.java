@@ -37,4 +37,15 @@ public class IpflMatchController implements IpflController<Match> {
 		
 	}
 
+	@Override
+	public Optional<Match> findByName(String name) {
+		return ipmds.findByName(name);
+	}
+
+	@Override
+	public void update(List<Match> m) {
+		ipmds.update(m);
+		
+	}
+
 }

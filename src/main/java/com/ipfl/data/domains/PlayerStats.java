@@ -7,6 +7,9 @@ import org.neo4j.ogm.annotation.Property;
 import org.neo4j.ogm.annotation.RelationshipEntity;
 import org.neo4j.ogm.annotation.StartNode;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties("player")
 @RelationshipEntity (type = "PLAYED_IN")
 public class PlayerStats {
 	
@@ -21,14 +24,14 @@ public class PlayerStats {
 	@EndNode
 	private Match match;
 	
-	@Property
+	@Property(name = "Runs")
 	private int runs;
 	
-	@Property
+	@Property(name = "Wickets")
 	private int wickets;
 	
-	@Property
-	private float catches;
+	@Property(name = "Catches")
+	private int catches;
 
 	
 	
@@ -36,8 +39,10 @@ public class PlayerStats {
 	
 	public PlayerStats() {}
 	
+	
 	/*--------------Getters----------*/
 
+	
 	public Long getId() {
 		return id;
 	}
@@ -68,7 +73,7 @@ public class PlayerStats {
 
 
 
-	public float getCatches() {
+	public int getCatches() {
 		return catches;
 	}
 

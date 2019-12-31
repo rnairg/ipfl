@@ -2,6 +2,7 @@ package com.ipfl.data.repositories;
 
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.neo4j.annotation.Query;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
@@ -11,6 +12,8 @@ import com.ipfl.data.domains.Player;
 
 @Repository
 public interface PlayerRepository extends Neo4jRepository<Player, Long> {
+	
+	public Optional<Player> findByName(String name);
 
 	@Query
 	("match (a:Player),(b:PLTeam)"

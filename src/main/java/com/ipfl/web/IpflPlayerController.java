@@ -39,6 +39,18 @@ public class IpflPlayerController implements IpflController<Player> {
 		
 		ipds.delete(p);	
 	}
+
+	@Override
+	public Optional<Player> findByName(String name) {
+		
+		return ipds.findByName(name);
+	}
+
+	@Override
+	public void update(List<Player> p) {
+		ipds.update(p);
+		
+	}
 	
 }
 

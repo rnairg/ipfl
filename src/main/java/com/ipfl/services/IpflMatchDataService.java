@@ -30,7 +30,9 @@ public class IpflMatchDataService implements IpflDataService<Match> {
 	public void delete(List<Match> m) {
 		for(Match m1 : m)
 		{
-		  matchRepository.delete(m1);
+		  matchRepository.delete(
+				  matchRepository.findByName(m1.getName()).get()
+				  );
 		}
 		
 	}
@@ -43,6 +45,20 @@ public class IpflMatchDataService implements IpflDataService<Match> {
 	@Override
 	public Iterable<Match> findAll() {
 		return matchRepository.findAll();
+	}
+
+	@Override
+	public Optional<Match> findByName(String name) {
+		return matchRepository.findByName(name);
+	}
+
+	@Override
+	public void update(List<Match> m) {
+		for(Match m1 : m)
+		{
+		  matchRepository.save(m1);
+		}
+		
 	}
 
 }
