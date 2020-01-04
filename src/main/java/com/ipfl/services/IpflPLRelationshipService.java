@@ -6,34 +6,56 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ipfl.data.domains.PLRole;
-import com.ipfl.data.repositories.PlayerRepository;
+import com.ipfl.data.repositories.IpflPLRelationshipRepository;
 
 @Service("ipflPLRelationshipService")
 public class IpflPLRelationshipService implements IpflRelationshipService<PLRole> {
 	
 	@Autowired
-	private PlayerRepository playerRepository;
-	
+	private IpflPLRelationshipRepository ipflRelationshipRepository;	
 
 	@Override
-	public List<PLRole> create(List<PLRole> rt) {
+	public List<PLRole> createMultiple(List<PLRole> rt) {
 		for(PLRole rt1:rt) {
-			System.out.println("Player "+rt1.getPlayer());
-			playerRepository.createPLRelationship(rt1.getPlayer().getName(),rt1.getPlteam().getName(),rt1.getPlroles());
+			//System.out.println("Player "+rt1);
+			//playerRepository.createPLRelationship(rt1.getPlayer().getName(),rt1.getPlteam().getName(),rt1.getPlroles());
+			if(rt1.getPlayer()!=null && rt1.getPlteam()!=null)
+			{
+				if(rt1.getPlayer().getName()!=null && rt1.getPlteam().getName()!=null && rt1.getStartDate()!=null)
+				{
+
+					ipflRelationshipRepository.createByNodeNames(rt1.getPlayer().getName(),
+							rt1.getPlteam().getName(),
+							rt1.getPlroles(),
+							rt1.getStartDate(),
+							rt1.getEndDate());
+				}
+			}else {
+				System.out.println("Player or Team is null");
+			}
+		}
+		return null;
+	}
+	@Override
+	public List<PLRole> createByNodeNames(List<PLRole> rt) {
+		for(PLRole rt1:rt) {
+			//System.out.println("Player "+rt1.getPlayer());
+			//playerRepository.createPLRelationship(rt1.getPlayer().getName(),rt1.getPlteam().getName(),rt1.getPlroles());
+			//ipflRelationshipRepository.createByNodeNames(rt1.getPlayer().getName(),rt1.getPlteam().getName(),rt1.getPlroles());
 		}
 		return null;
 	}
 
 
 	@Override
-	public void delete(List<PLRole> t) {
+	public void deleteMultiple(List<PLRole> t) {
 		// TODO Auto-generated method stub
 		
 	}
 
 
 	@Override
-	public List<PLRole> update(List<PLRole> t) {
+	public List<PLRole> updateMultiple(List<PLRole> t) {
 		// TODO Auto-generated method stub
 		return null;
 		
@@ -48,7 +70,7 @@ public class IpflPLRelationshipService implements IpflRelationshipService<PLRole
 
 
 	@Override
-	public Iterable<PLRole> findAll() {
+	public List<PLRole> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -59,6 +81,9 @@ public class IpflPLRelationshipService implements IpflRelationshipService<PLRole
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+	
 
 
 }

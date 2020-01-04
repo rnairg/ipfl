@@ -28,12 +28,12 @@ public class IpflMatchController implements IpflController<Match> {
 
 	@Override
 	public List<Match> create(List<Match> m) {
-		return ipmds.create(m);
+		return ipmds.createMultiple(m);
 	}
 
 	@Override
 	public void delete(List<Match> m) {
-		ipmds.delete(m);
+		ipmds.deleteMultiple(m);
 		
 	}
 
@@ -43,8 +43,8 @@ public class IpflMatchController implements IpflController<Match> {
 	}
 
 	@Override
-	public void update(List<Match> m) {
-		ipmds.update(m);
+	public List<Match> update(List<Match> m) {
+		return ipmds.updateMultiple(m);
 		
 	}
 

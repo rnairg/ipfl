@@ -17,7 +17,13 @@ public class IpflFRelationshipController implements IpflRelationshipController<F
 
 	
 	public List<FRole> create(List<FRole> rt) {
-		ipflFRelationshipService.create(rt);
+		return ipflFRelationshipService.createMultiple(rt);
+	}
+
+
+	@Override
+	public List<FRole> createByNodeNames(List<FRole> t) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 	

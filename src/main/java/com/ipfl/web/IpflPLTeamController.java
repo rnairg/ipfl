@@ -31,12 +31,12 @@ public class IpflPLTeamController implements IpflController<PLTeam> {
 	@Override
 	public List<PLTeam> create(List<PLTeam> t) {
 		
-		return ipltds.create(t);
+		return ipltds.createMultiple(t);
 	}
 
 	@Override
 	public void delete(List<PLTeam> t) {
-		ipltds.delete(t);
+		ipltds.deleteMultiple(t);
 		
 	}
 
@@ -46,8 +46,8 @@ public class IpflPLTeamController implements IpflController<PLTeam> {
 	}
 
 	@Override
-	public void update(List<PLTeam> t) {
-		ipltds.update(t);
+	public List<PLTeam> update(List<PLTeam> t) {
+		return ipltds.updateMultiple(t);
 		
 	}
 

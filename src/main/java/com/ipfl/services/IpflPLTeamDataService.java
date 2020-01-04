@@ -15,17 +15,14 @@ public class IpflPLTeamDataService implements IpflDataService<PLTeam> {
 	PLTeamRepository pLTeamRepository;
 
 	@Override
-	public List<PLTeam> create(List<PLTeam> plt) {
-		List<PLTeam> rplt = new ArrayList<>();
-		for(PLTeam plt1 : plt)
-		{
-		  rplt.add(pLTeamRepository.save(plt1));
-		}
-		return rplt;
+	public List<PLTeam> createMultiple(List<PLTeam> plt) {
+		List<PLTeam> result = new ArrayList<>();
+		pLTeamRepository.saveAll(plt).forEach(result::add);
+		return result;
 	}
 
 	@Override
-	public void delete(List<PLTeam> plt) {
+	public void deleteMultiple(List<PLTeam> plt) {
 		for(PLTeam plt1 : plt)
 		{
 			pLTeamRepository.delete(
@@ -40,8 +37,10 @@ public class IpflPLTeamDataService implements IpflDataService<PLTeam> {
 	}
 
 	@Override
-	public Iterable<PLTeam> findAll() {
-		return pLTeamRepository.findAll();
+	public List<PLTeam> findAll() {
+		List<PLTeam> result = new ArrayList<>();
+		pLTeamRepository.findAll().forEach(result::add);
+		return result;
 	}
 
 	@Override
@@ -50,11 +49,10 @@ public class IpflPLTeamDataService implements IpflDataService<PLTeam> {
 	}
 
 	@Override
-	public void update(List<PLTeam> plt) {
-		for(PLTeam plt1 : plt)
-		{
-		  pLTeamRepository.save(plt1);
-		}
+	public List<PLTeam> updateMultiple(List<PLTeam> plt) {
+		List<PLTeam> result = new ArrayList<>();
+		pLTeamRepository.saveAll(plt).forEach(result::add);
+		return result;
 		
 	}
 

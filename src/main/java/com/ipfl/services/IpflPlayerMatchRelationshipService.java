@@ -1,5 +1,6 @@
 package com.ipfl.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -7,24 +8,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ipfl.data.domains.PlayerStats;
-import com.ipfl.data.repositories.PlayerRepository;
+import com.ipfl.data.repositories.IpflPlayerMatchRelationshipRepository;
 
 @Service("ipflPlayerMatchRelationshipService")
 public class IpflPlayerMatchRelationshipService implements IpflRelationshipService<PlayerStats> {
 
 	@Autowired
-	PlayerRepository playerRepository;
+	IpflPlayerMatchRelationshipRepository ipflPlayerMatchRelationshipRepository;
 	
 	@Override
-	public List<PlayerStats> create(List<PlayerStats> rt) {
-		for(PlayerStats rt1 : rt) {
-			playerRepository.createPlayerMatchRelationship(rt1.getPlayer().getName(),rt1.getMatch().getName(),rt1.getRuns(),rt1.getWickets(),rt1.getCatches());
-		}
-		return null;
+	public List<PlayerStats> createMultiple(List<PlayerStats> rt) {
+		List<PlayerStats> result = new ArrayList<>();
+		ipflPlayerMatchRelationshipRepository.saveAll(rt).forEach(rt::add);
+		return result;
 	}
 
 	@Override
-	public void delete(List<PlayerStats> rt) {
+	public void deleteMultiple(List<PlayerStats> rt) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -36,7 +36,7 @@ public class IpflPlayerMatchRelationshipService implements IpflRelationshipServi
 	}
 
 	@Override
-	public Iterable<PlayerStats> findAll() {
+	public List<PlayerStats> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -48,7 +48,13 @@ public class IpflPlayerMatchRelationshipService implements IpflRelationshipServi
 	}
 
 	@Override
-	public List<PlayerStats> update(List<PlayerStats> t) {
+	public List<PlayerStats> updateMultiple(List<PlayerStats> t) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<PlayerStats> createByNodeNames(List<PlayerStats> t) {
 		// TODO Auto-generated method stub
 		return null;
 	}

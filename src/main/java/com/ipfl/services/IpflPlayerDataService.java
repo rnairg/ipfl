@@ -15,18 +15,14 @@ public class IpflPlayerDataService implements IpflDataService<Player> {
 	private PlayerRepository playerRepository;
 
 	@Override
-	public List<Player> create(List<Player> p) {
-		List<Player> rp = new ArrayList<>();
-		for(Player p1 : p)
-		{
-		  System.out.println(p1.getName());
-		  rp.add(playerRepository.save(p1));
-		}
-		return rp;
+	public List<Player> createMultiple(List<Player> p) {
+		List<Player> result = new ArrayList<>();
+		playerRepository.saveAll(p).forEach(result::add);
+		return result;
 	}
 
 	@Override
-	public void delete(List<Player> p) {
+	public void deleteMultiple(List<Player> p) {
 		for(Player p1 : p)
 		{
 			 
@@ -44,9 +40,10 @@ public class IpflPlayerDataService implements IpflDataService<Player> {
 	}
 
 	@Override
-	public Iterable<Player> findAll() {
-		
-		return playerRepository.findAll();
+	public List<Player> findAll() {
+		List<Player> result = new ArrayList<>();
+		playerRepository.findAll().forEach(result::add);
+		return result;
 	}
 
 	@Override
@@ -56,12 +53,10 @@ public class IpflPlayerDataService implements IpflDataService<Player> {
 	}
 
 	@Override
-	public void update(List<Player> p) {
-		for(Player p1 : p)
-		{
-		  playerRepository.save(p1);
-		}
-		
+	public List<Player> updateMultiple(List<Player> p) {
+		List<Player> result = new ArrayList<>();
+		playerRepository.saveAll(p).forEach(result::add);
+		return result;
 	}
 
 }

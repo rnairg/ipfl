@@ -11,7 +11,7 @@ import com.ipfl.data.domains.FantasyTeam;
 import com.ipfl.services.IpflDataService;
 
 @RestController
-@RequestMapping("/fTeam")
+@RequestMapping("/fTeams")
 public class IpflFantasyTeamController implements IpflController<FantasyTeam> {
 	
 	@Autowired
@@ -29,12 +29,12 @@ public class IpflFantasyTeamController implements IpflController<FantasyTeam> {
 
 	@Override
 	public List<FantasyTeam> create(List<FantasyTeam> ft) {
-		return iptds.create(ft);
+		return iptds.createMultiple(ft);
 	}
 
 	@Override
 	public void delete(List<FantasyTeam> ft) {
-		iptds.delete(ft);
+		iptds.deleteMultiple(ft);
 		
 	}
 
@@ -44,8 +44,8 @@ public class IpflFantasyTeamController implements IpflController<FantasyTeam> {
 	}
 
 	@Override
-	public void update(List<FantasyTeam> ft) {
-		iptds.update(ft);
+	public List<FantasyTeam> update(List<FantasyTeam> ft) {
+		return iptds.updateMultiple(ft);
 		
 	}
 }

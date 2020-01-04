@@ -31,13 +31,13 @@ public class IpflPlayerController implements IpflController<Player> {
 	@Override
 	public List<Player> create(List<Player> p) {
 		
-		return ipds.create(p);
+		return ipds.createMultiple(p);
 	}
 
 	@Override
 	public void delete(List<Player> p) {
 		
-		ipds.delete(p);	
+		ipds.deleteMultiple(p);	
 	}
 
 	@Override
@@ -47,8 +47,8 @@ public class IpflPlayerController implements IpflController<Player> {
 	}
 
 	@Override
-	public void update(List<Player> p) {
-		ipds.update(p);
+	public List<Player> update(List<Player> p) {
+		return ipds.updateMultiple(p);
 		
 	}
 	

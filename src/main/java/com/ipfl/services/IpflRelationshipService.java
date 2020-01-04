@@ -5,11 +5,15 @@ import java.util.Optional;
 
 public interface IpflRelationshipService<R> {
 	
-	List<R> create (List<R> t);
-	void delete (List<R> t);
-	List<R> update (List<R> t);
+	//Bulk Operations
+	List<R> createMultiple (List<R> t);
+	List<R> createByNodeNames (List<R> t);
+	void deleteMultiple (List<R> t);
+	List<R> updateMultiple (List<R> t);
+	List<R> findAll();
+	
+	//Single Operations
 	Optional<R> findById(long id);
-	Iterable<R> findAll();
 	Optional<R> findByName(String name);
 
 }

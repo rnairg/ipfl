@@ -24,12 +24,12 @@ public interface IpflController <T> {
 	@GetMapping
 	Optional<T> findByName(@RequestParam(value="name") String name);
 	
-	@PostMapping("/create")
+	@PostMapping("/bulk/create")
 	List<T> create(@RequestBody List<T> t);
 	
-	@DeleteMapping("/delete")
+	@DeleteMapping("/bulk/delete")
 	void delete(@RequestBody List<T> t);
 	
-	@PutMapping("/update")
-	void update(@RequestBody List<T> t);
+	@PutMapping("/bulk/update")
+	List<T> update(@RequestBody List<T> t);
 }

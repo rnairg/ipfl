@@ -11,7 +11,7 @@ import com.ipfl.services.IpflRelationshipService;
 
 @RestController
 @RequestMapping("/matchRelationship")
-public class IpflMatchRelationshipController implements IpflRelationshipController<MatchStats> {
+public class IpflPLTeamMatchRelationshipController implements IpflRelationshipController<MatchStats> {
 
 	@Autowired
 	private IpflRelationshipService<MatchStats> ipflMatchRelationshipService;
@@ -19,7 +19,14 @@ public class IpflMatchRelationshipController implements IpflRelationshipControll
 
 	@Override
 	public List<MatchStats> create(List<MatchStats> rt) {
-		ipflMatchRelationshipService.create(rt);
+		return ipflMatchRelationshipService.createMultiple(rt);
+		
+	}
+
+
+	@Override
+	public List<MatchStats> createByNodeNames(List<MatchStats> t) {
+		
 		return null;
 	}
 

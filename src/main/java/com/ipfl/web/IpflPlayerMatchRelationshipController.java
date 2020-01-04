@@ -19,7 +19,15 @@ public class IpflPlayerMatchRelationshipController implements IpflRelationshipCo
 
 	@Override
 	public List<PlayerStats> create(List<PlayerStats> rt) {
-		ipflPlayerMatchRelationshipService.create(rt);
+		return ipflPlayerMatchRelationshipService.createMultiple(rt);
+
+	}
+
+
+
+	@Override
+	public List<PlayerStats> createByNodeNames(List<PlayerStats> t) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

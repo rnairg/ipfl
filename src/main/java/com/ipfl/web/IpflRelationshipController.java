@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/default")
 public interface IpflRelationshipController<R> {
 	
-	@PostMapping("/create")
+	@PostMapping("/bulk/create")
 	List<R> create (@RequestBody List<R> t);
+	
+	@PostMapping("/bulk/create/byNodes")
+	List<R> createByNodeNames (@RequestBody List<R> t);
 
 }

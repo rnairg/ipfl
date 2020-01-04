@@ -15,17 +15,15 @@ public class IpflFantasyTeamDataService implements IpflDataService<FantasyTeam> 
 	FantasyTeamRepository fantasyTeamRepository;
 
 	@Override
-	public List<FantasyTeam> create(List<FantasyTeam> ft) {
-		List<FantasyTeam> rft = new ArrayList<>();
-		for(FantasyTeam ft1 : ft)
-		{
-		  rft.add(fantasyTeamRepository.save(ft1));
-		}
-		return rft;
+	public List<FantasyTeam> createMultiple(List<FantasyTeam> ft) {
+		
+		List<FantasyTeam> result = new ArrayList<>();
+		fantasyTeamRepository.saveAll(ft).forEach(result::add);
+		return result;
 	}
 
 	@Override
-	public void delete(List<FantasyTeam> ft) {
+	public void deleteMultiple(List<FantasyTeam> ft) {
 		for(FantasyTeam ft1 : ft)
 		{
 			fantasyTeamRepository.delete(
@@ -41,8 +39,10 @@ public class IpflFantasyTeamDataService implements IpflDataService<FantasyTeam> 
 	}
 
 	@Override
-	public Iterable<FantasyTeam> findAll() {
-		return fantasyTeamRepository.findAll();
+	public List<FantasyTeam> findAll() {
+		List<FantasyTeam> result = new ArrayList<>();
+		fantasyTeamRepository.findAll().forEach(result::add);
+		return result;
 	}
 
 	@Override
@@ -51,12 +51,11 @@ public class IpflFantasyTeamDataService implements IpflDataService<FantasyTeam> 
 	}
 
 	@Override
-	public void update(List<FantasyTeam> ft) {
-		for(FantasyTeam ft1 : ft)
-		{
-		  fantasyTeamRepository.save(ft1);
-		}
-		
+	public List<FantasyTeam> updateMultiple(List<FantasyTeam> ft) {
+		List<FantasyTeam> result = new ArrayList<>();
+		fantasyTeamRepository.saveAll(ft).forEach(result::add);
+		return result;
+
 	}
 
 }

@@ -17,17 +17,14 @@ public class IpflMatchDataService implements IpflDataService<Match> {
 	MatchRepository matchRepository;
 
 	@Override
-	public List<Match> create(List<Match> m) {
-		List<Match> rm = new ArrayList<>();
-		for(Match m1 : m)
-		{
-		  rm.add(matchRepository.save(m1));
-		}
-		return rm;
+	public List<Match> createMultiple(List<Match> m) {
+		List<Match> result = new ArrayList<>();
+		matchRepository.saveAll(m).forEach(result::add);
+		return result;
 	}
 
 	@Override
-	public void delete(List<Match> m) {
+	public void deleteMultiple(List<Match> m) {
 		for(Match m1 : m)
 		{
 		  matchRepository.delete(
@@ -43,8 +40,10 @@ public class IpflMatchDataService implements IpflDataService<Match> {
 	}
 
 	@Override
-	public Iterable<Match> findAll() {
-		return matchRepository.findAll();
+	public List<Match> findAll() {
+		List<Match> result = new ArrayList<>();
+		matchRepository.findAll().forEach(result::add);
+		return result;
 	}
 
 	@Override
@@ -53,11 +52,11 @@ public class IpflMatchDataService implements IpflDataService<Match> {
 	}
 
 	@Override
-	public void update(List<Match> m) {
-		for(Match m1 : m)
-		{
-		  matchRepository.save(m1);
-		}
+	public List<Match> updateMultiple(List<Match> m) {
+		List<Match> result = new ArrayList<>();
+		matchRepository.saveAll(m).forEach(result::add);
+		return result;
+		
 		
 	}
 

@@ -18,8 +18,14 @@ public class IpflPLRelationshipController implements IpflRelationshipController<
 	@Override
 	public List<PLRole> create(List<PLRole> rt) {
 		
-			ipflPLRelationshipService.create(rt);
+		return ipflPLRelationshipService.createMultiple(rt);
 	
+	
+	}
+
+	@Override
+	public List<PLRole> createByNodeNames(List<PLRole> rt) {
+		ipflPLRelationshipService.createByNodeNames(rt);
 		return null;
 	}
 }
