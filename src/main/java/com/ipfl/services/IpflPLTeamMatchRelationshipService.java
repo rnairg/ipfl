@@ -1,11 +1,11 @@
 package com.ipfl.services;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.ipfl.data.domains.MatchStats;
 import com.ipfl.data.repositories.IpflPLTeamMatchRelationshipRepository;
 
@@ -17,9 +17,23 @@ public class IpflPLTeamMatchRelationshipService implements IpflRelationshipServi
 	
 	@Override
 	public List<MatchStats> createMultiple(List<MatchStats> rt) {
-		List<MatchStats> result = new ArrayList<>();
-		ipflPLTeamMatchRelationshipRepository.saveAll(rt).forEach(result::add);
-		return result;
+		for(MatchStats rt1:rt) {
+			if(rt1.getPlTeam()!=null && rt1.getMatch()!=null)
+			{
+				if(rt1.getPlTeam().getName()!=null && rt1.getMatch().getName()!=null)
+				{
+
+					ipflPLTeamMatchRelationshipRepository.createByNodeNames(rt1.getPlTeam().getName(),
+							rt1.getMatch().getName(),
+							rt1.getRuns(),
+							rt1.getWickets(),
+							rt1.getOvers());
+				}
+			}else {
+				System.out.println("Player or Team is null");
+			}
+		}
+		return null;
 	}
 
 	@Override

@@ -2,27 +2,14 @@ package com.ipfl.data.domains;
 
 import java.util.List;
 
-import org.neo4j.ogm.annotation.CompositeIndex;
-import org.neo4j.ogm.annotation.GeneratedValue;
-import org.neo4j.ogm.annotation.Id;
-import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Property;
 import org.neo4j.ogm.annotation.Relationship;
 import org.neo4j.ogm.annotation.Required;
 
 
-@NodeEntity (label = "PLTeam")
-@CompositeIndex(value= {"name"},unique = true)
-public class PLTeam {
+public class PLTeam  extends Node{
 	
 	/*--------------Member Variables----------*/
-	
-	@Id @GeneratedValue
-	Long id;
-	
-	@Property
-	@Required
-	private String name;
 	
 	@Property
 	@Required
@@ -37,13 +24,7 @@ public class PLTeam {
 		
 	/*--------------Getters----------*/
 	
-	public Long getId() {
-		return id;
-	}
 
-	public String getName() {
-		return name;
-	}
 
 	public List<Player> getPlayers() {
 		return players;

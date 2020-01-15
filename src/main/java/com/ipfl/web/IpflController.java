@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.ipfl.data.domains.Node;
+
 @RequestMapping("/default")
-public interface IpflController <T> {
+public interface IpflController <T extends Node> {
 	
 	@GetMapping("/")
 	List<T> findAll();

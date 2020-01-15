@@ -3,24 +3,15 @@ package com.ipfl.data.domains;
 import java.util.Date;
 import java.util.List;
 
-import org.neo4j.ogm.annotation.GeneratedValue;
-import org.neo4j.ogm.annotation.Id;
-import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Property;
 import org.neo4j.ogm.annotation.Relationship;
 import org.neo4j.ogm.annotation.Required;
 import org.neo4j.ogm.annotation.typeconversion.DateString;
 
-@NodeEntity (label = "Match")
-public class Match {
+
+public class Match extends Node {
 	
 	/*--------------Member Variables----------*/
-	@Id @GeneratedValue
-	Long id;
-	
-	@Property
-	@Required
-	private String name;
 	
 	@Property
 	@Required
@@ -38,14 +29,6 @@ public class Match {
 	public Match() {}
 
 	/*--------------Getters----------*/
-
-	public Long getId() {
-		return id;
-	}
-
-	public String getName() {
-		return name;
-	}
 
 	public Date getMatchDate() {
 		return matchDate;

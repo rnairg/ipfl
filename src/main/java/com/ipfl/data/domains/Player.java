@@ -2,7 +2,6 @@ package com.ipfl.data.domains;
 
 import java.util.List;
 
-import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Property;
 import org.neo4j.ogm.annotation.Relationship;
 import org.neo4j.ogm.annotation.Required;
@@ -10,7 +9,6 @@ import org.neo4j.ogm.annotation.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
-@NodeEntity (label = "Player")
 
 public class Player extends Person {
 	
@@ -20,15 +18,15 @@ public class Player extends Person {
 	@Required
 	private String nationality;
 	
-	@JsonIgnoreProperties("player")
+	@JsonIgnoreProperties("Player")
 	@Relationship(type="PLAYS_FOR")
 	private PLRole plrole;
 	
-	@JsonIgnoreProperties("player")
+	@JsonIgnoreProperties("Player")
 	@Relationship(type="PICKED_IN")
 	private List<FRole> frole;
 	
-	@JsonIgnoreProperties("player")
+	@JsonIgnoreProperties("Player")
 	@Relationship(type="PLAYED_IN")
 	private List<PlayerStats> playerStats;
 	

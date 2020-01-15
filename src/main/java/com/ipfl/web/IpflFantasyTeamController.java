@@ -11,7 +11,7 @@ import com.ipfl.data.domains.FantasyTeam;
 import com.ipfl.services.IpflDataService;
 
 @RestController
-@RequestMapping("/fTeams")
+@RequestMapping("/fTeam")
 public class IpflFantasyTeamController implements IpflController<FantasyTeam> {
 	
 	@Autowired

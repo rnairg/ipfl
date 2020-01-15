@@ -3,7 +3,9 @@ package com.ipfl.services;
 import java.util.List;
 import java.util.Optional;
 
-public interface IpflDataService <T>{
+import com.ipfl.data.domains.Node;
+
+public interface IpflDataService <T extends Node>{
 	
 	//Bulk Operations
 	List<T> createMultiple(List<T> t);

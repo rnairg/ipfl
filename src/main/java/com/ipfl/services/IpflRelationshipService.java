@@ -2,8 +2,10 @@ package com.ipfl.services;
 
 import java.util.List;
 import java.util.Optional;
+import com.ipfl.data.domains.Relationship;
 
-public interface IpflRelationshipService<R> {
+
+public interface IpflRelationshipService<R extends Relationship<?, ?>> {
 	
 	//Bulk Operations
 	List<R> createMultiple (List<R> t);

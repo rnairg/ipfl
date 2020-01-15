@@ -17,8 +17,6 @@ public class IpflPLRelationshipService implements IpflRelationshipService<PLRole
 	@Override
 	public List<PLRole> createMultiple(List<PLRole> rt) {
 		for(PLRole rt1:rt) {
-			//System.out.println("Player "+rt1);
-			//playerRepository.createPLRelationship(rt1.getPlayer().getName(),rt1.getPlteam().getName(),rt1.getPlroles());
 			if(rt1.getPlayer()!=null && rt1.getPlteam()!=null)
 			{
 				if(rt1.getPlayer().getName()!=null && rt1.getPlteam().getName()!=null && rt1.getStartDate()!=null)
@@ -38,11 +36,7 @@ public class IpflPLRelationshipService implements IpflRelationshipService<PLRole
 	}
 	@Override
 	public List<PLRole> createByNodeNames(List<PLRole> rt) {
-		for(PLRole rt1:rt) {
-			//System.out.println("Player "+rt1.getPlayer());
-			//playerRepository.createPLRelationship(rt1.getPlayer().getName(),rt1.getPlteam().getName(),rt1.getPlroles());
-			//ipflRelationshipRepository.createByNodeNames(rt1.getPlayer().getName(),rt1.getPlteam().getName(),rt1.getPlroles());
-		}
+	
 		return null;
 	}
 

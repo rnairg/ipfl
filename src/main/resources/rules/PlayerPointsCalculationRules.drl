@@ -1,0 +1,43 @@
+//created on: 13-Jan-2020
+package rules
+
+//list any import classes here.
+
+import com.ipfl.data.domains.PlayerStats;
+
+
+//declare any global variables here
+
+rule "Wicket-Keeper"
+
+   when
+        $ps: PlayerStats(startNode.plrole.plroles contains "Wicket Keeper");
+    then
+        $ps.setPoints(($ps.getRuns()*1)+($ps.getCatches()*5));
+        System.out.println("Wicket Keeper Rule fired");
+end
+
+rule "Batsman"
+    
+    when
+        $ps: PlayerStats(startNode.plrole.plroles contains "Batsman");
+    then
+        $ps.setPoints($ps.getRuns()*1);
+        System.out.println("Batsman Rule fired");
+end
+
+rule "Bowler"
+    when
+        $ps: PlayerStats(startNode.plrole.plroles contains "Bowler");
+    then
+        $ps.setPoints($ps.getWickets()*10);
+        System.out.println("Bowler Rule fired");
+end
+
+rule "All-Rounder"
+    when
+        $ps: PlayerStats(startNode.plrole.plroles contains "All-Rounder");
+    then
+        $ps.setPoints(($ps.getRuns()*1)+($ps.getWickets()*10));
+        System.out.println("All-Rounder Rule fired");
+end

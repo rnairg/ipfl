@@ -15,9 +15,13 @@ public interface IpflPLRelationshipRepository extends Neo4jRepository<PLRole, Lo
 	@Query
 	("match (a:Player),(b:PLTeam)"
 			+ "where a.name = {player} and b.name = {plteam}"
-			+ "create unique (a)-[r:PLAYS_FOR{PLRole:{plroles},"
-			+ "StartDate:{startDate}, "
-			+ "EndDate:{endDate}}]->(b) "
+			+ "merge (a)-[r:PLAYS_FOR]->(b)"
+			+ "ON MATCH SET r.PLRole={plroles}"
+			+ ",r.StartDate={startDate}"
+			+ ",r.EndDate={endDate}"
+			+ "ON CREATE SET r.PLRole={plroles}"
+			+ ",r.StartDate={startDate}"
+			+ ",r.EndDate={endDate}"
 			+ "return (r)")
 	PLRole createByNodeNames(@Param("player") String player, 
 			@Param("plteam") String plteam, 

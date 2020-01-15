@@ -1,6 +1,5 @@
 package com.ipfl.services;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,11 +20,23 @@ public class IpflFRelationshipService implements IpflRelationshipService<FRole> 
 	@Override
 	public List<FRole> createMultiple(List<FRole> rt) {		
 		
-		List<FRole> result = new ArrayList<>();
-		
-		ipflFRelationshipRepository.saveAll(rt).forEach(result::add);
-		
-		return result;
+		for(FRole rt1:rt) {
+			if(rt1.getPlayer()!=null && rt1.getFteam()!=null)
+			{
+				if(rt1.getPlayer().getName()!=null && rt1.getFteam().getName()!=null && rt1.getStartDate()!=null)
+				{
+
+					ipflFRelationshipRepository.createByNodeNames(rt1.getPlayer().getName(),
+							rt1.getFteam().getName(),
+							rt1.getFroles(),
+							rt1.getStartDate(),
+							rt1.getEndDate());
+				}
+			}else {
+				System.out.println("Player or Team is null");
+			}
+		}
+		return null;
 	}
 
 

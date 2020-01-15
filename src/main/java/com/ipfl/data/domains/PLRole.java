@@ -3,22 +3,19 @@ package com.ipfl.data.domains;
 import java.util.Date;
 import java.util.List;
 
-import org.neo4j.ogm.annotation.EndNode;
-import org.neo4j.ogm.annotation.GeneratedValue;
-import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.Property;
 import org.neo4j.ogm.annotation.RelationshipEntity;
-import org.neo4j.ogm.annotation.StartNode;
 import org.neo4j.ogm.annotation.typeconversion.DateString;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+
 @RelationshipEntity(type = "PLAYS_FOR")
-public class PLRole {
+public class PLRole extends Relationship<Player, PLTeam>{
 	
 	/*--------------Member Variables----------*/
 	
-@Id @GeneratedValue
-Long id;
-
 @Property(name="PLRole")
 private List<String> plroles;
 
@@ -30,43 +27,34 @@ private Date startDate;
 @DateString ("YYYY-MM-DD")
 private Date endDate;
 
-
-@StartNode
-private Player player;
-
-@EndNode
-private PLTeam plteam;
-
 /*--------------Constructors----------*/
 
 public PLRole() {
-	
+	super();
 }
 
-public PLRole(Player player, PLTeam plteam, List<String> plroles) {
-	super();
+@JsonCreator
+public PLRole(@JsonProperty("Player") Player player, @JsonProperty("PLTeam") PLTeam plteam, List<String> plroles, Date startDate, Date endDate) {
+	super(player, plteam);
 	this.plroles = plroles;
-	this.player = player;
-	this.plteam = plteam;
-}
-public PLRole(PLTeam plteam, List<String> plroles) {
-	super();
-	this.plroles = plroles;
-	this.plteam = plteam;
+	this.startDate = startDate;
+	this.endDate = endDate;
 }
 
 /*--------------Getters----------*/
+
+
 
 public List<String> getPlroles() {
 	return plroles;
 }
 
-public PLTeam getPlteam() {
-	return plteam;
+public Player getPlayer() {
+	return super.getStartNode();
 }
 
-public Player getPlayer() {
-	return player;
+public PLTeam getPlteam() {
+	return super.getEndNode();
 }
 
 public Date getStartDate() {
