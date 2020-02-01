@@ -6,17 +6,27 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ipfl.data.domains.PLRole;
+import com.ipfl.data.domains.PLTeam;
+import com.ipfl.data.domains.Player;
 import com.ipfl.data.repositories.IpflPLRelationshipRepository;
+import com.ipfl.data.repositories.PLTeamRepository;
+import com.ipfl.data.repositories.PlayerRepository;
 
 @Service("ipflPLRelationshipService")
 public class IpflPLRelationshipService implements IpflRelationshipService<PLRole> {
 	
 	@Autowired
-	private IpflPLRelationshipRepository ipflRelationshipRepository;	
+	private IpflPLRelationshipRepository ipflRelationshipRepository;
+	
+	@Autowired
+	private PlayerRepository playerRepository;
+	
+	@Autowired
+	private PLTeamRepository pLTeamRepository;
 
 	@Override
 	public List<PLRole> createMultiple(List<PLRole> rt) {
-		for(PLRole rt1:rt) {
+		/*for(PLRole rt1:rt) {
 			if(rt1.getPlayer()!=null && rt1.getPlteam()!=null)
 			{
 				if(rt1.getPlayer().getName()!=null && rt1.getPlteam().getName()!=null && rt1.getStartDate()!=null)
@@ -31,6 +41,13 @@ public class IpflPLRelationshipService implements IpflRelationshipService<PLRole
 			}else {
 				System.out.println("Player or Team is null");
 			}
+		}
+		return null;*/
+		for(PLRole rt1:rt) {
+			Player p = playerRepository.findByName(rt1.getPlayer().getName(), Player.class).get();
+			PLTeam pt = pLTeamRepository.findByName(rt1.getPlteam().getName(), PLTeam.class).get();
+			ipflRelationshipRepository.save(new PLRole(p,pt,rt1.getPlroles(),rt1.getStartDate(),
+					rt1.getEndDate()));
 		}
 		return null;
 	}

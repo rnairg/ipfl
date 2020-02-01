@@ -18,34 +18,55 @@ public class IpflFantasyTeamController implements IpflController<FantasyTeam> {
 	IpflDataService<FantasyTeam> iptds;
 
 	@Override
-	public List<FantasyTeam> findAll() {
-		return (List<FantasyTeam>) iptds.findAll();
+	public List<?> findAll() {
+		return iptds.findAll();
 	}
 
 	@Override
-	public Optional<FantasyTeam> findById(int id) {
+	public Optional<?> findById(Long id) {
 		return iptds.findById(id);
 	}
 
 	@Override
 	public List<FantasyTeam> create(List<FantasyTeam> ft) {
-		return iptds.createMultiple(ft);
+		return iptds.saveAll(ft);
 	}
 
 	@Override
 	public void delete(List<FantasyTeam> ft) {
-		iptds.deleteMultiple(ft);
+		iptds.deleteAll(ft);
 		
 	}
 
 	@Override
-	public Optional<FantasyTeam> findByName(String name) {
+	public Optional<?> findByName(String name) {
 		return iptds.findByName(name);
 	}
 
 	@Override
 	public List<FantasyTeam> update(List<FantasyTeam> ft) {
-		return iptds.updateMultiple(ft);
+		return iptds.updateAll(ft);
 		
+	}
+
+	@Override
+	public List<?> findByRelatedNode(String nodeName, String relationName) {
+		return iptds.findByRelatedNode(nodeName, relationName);
+	}
+
+	@Override
+	public FantasyTeam create(FantasyTeam t) {
+		return iptds.save(t);
+	}
+
+	@Override
+	public void delete(FantasyTeam t) {
+		iptds.delete(t);
+		
+	}
+
+	@Override
+	public FantasyTeam update(FantasyTeam t) {
+		return iptds.save(t);
 	}
 }

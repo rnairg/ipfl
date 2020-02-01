@@ -28,5 +28,6 @@ public interface IpflPLRelationshipRepository extends Neo4jRepository<PLRole, Lo
 			@Param("plroles") List<String> plroles,
 			@Param("startDate") Date startDate,
 			@Param("endDate") Date endDate);
+	
 
 }

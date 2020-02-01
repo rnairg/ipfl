@@ -18,13 +18,14 @@ import com.ipfl.data.domains.Node;
 public interface IpflController <T extends Node> {
 	
 	@GetMapping("/")
-	List<T> findAll();
+	List<?> findAll();
 	
 	@GetMapping("/{id}")
-	Optional<T> findById(@PathVariable int id);
+	Optional<?> findById(@PathVariable Long id);
+	
 	
 	@GetMapping
-	Optional<T> findByName(@RequestParam(value="name") String name);
+	Optional<?> findByName(@RequestParam(value="name") String name);
 	
 	@PostMapping("/bulk/create")
 	List<T> create(@RequestBody List<T> t);
@@ -34,4 +35,16 @@ public interface IpflController <T extends Node> {
 	
 	@PutMapping("/bulk/update")
 	List<T> update(@RequestBody List<T> t);
+	
+	@GetMapping("/find/{nodeName}/{relationName}")
+	List<?> findByRelatedNode(@PathVariable("nodeName") String nodeName, @PathVariable("relationName") String relationName);
+	
+	@PostMapping("/create")
+	T create(@RequestBody T t);
+	
+	@DeleteMapping("/delete")
+	void delete(@RequestBody T t);
+	
+	@PutMapping("/update")
+	T update(@RequestBody T t);
 }

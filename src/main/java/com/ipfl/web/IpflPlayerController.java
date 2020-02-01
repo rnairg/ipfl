@@ -16,42 +16,65 @@ public class IpflPlayerController implements IpflController<Player> {
 	
 	@Autowired
 	IpflDataService<Player> ipds;
+	
 	@Override
-	public List<Player> findAll() {
+	public List<?> findAll() {
 		
-		return (List<Player>) ipds.findAll();
+		return ipds.findAll();
 	}
 
 	@Override
-	public Optional<Player> findById(int id) {
+	public Optional<?> findById(Long id) {
 		
 		return ipds.findById(id);
 	}
+	
 
 	@Override
 	public List<Player> create(List<Player> p) {
 		
-		return ipds.createMultiple(p);
+		return ipds.saveAll(p);
 	}
 
 	@Override
 	public void delete(List<Player> p) {
 		
-		ipds.deleteMultiple(p);	
+		ipds.deleteAll(p);	
 	}
 
 	@Override
-	public Optional<Player> findByName(String name) {
+	public Optional<?> findByName(String name) {
 		
 		return ipds.findByName(name);
 	}
 
 	@Override
 	public List<Player> update(List<Player> p) {
-		return ipds.updateMultiple(p);
+		return ipds.saveAll(p);
 		
 	}
 	
+	@Override
+	public List<?> findByRelatedNode(String nodeName, String relationName) {
+		return ipds.findByRelatedNode(nodeName, relationName);
+		
+	}
+
+	@Override
+	public Player create(Player t) {
+		return ipds.save(t);
+	}
+
+	@Override
+	public void delete(Player t) {
+		ipds.delete(t);
+		
+	}
+
+	@Override
+	public Player update(Player t) {
+		return ipds.save(t);
+	}
 }
 
 

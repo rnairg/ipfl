@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.ipfl.data.domains.Person;
 import com.ipfl.data.domains.Player;
+import com.ipfl.data.dto.PlayerDTO;
 import com.ipfl.services.IpflPlayerDataService;
 
 
@@ -30,8 +30,8 @@ class ApplicationTests {
 	void testFindById() {
 		
 		Optional<Player> op = ipds.findById(0);
-		Person p = op.get();
-		System.out.println("Name is: "+ p.getName());
+		//PlayerSummary p = op.get();
+		System.out.println("Name is: "+ op.get().getName());
 		
 	}
 	@Test

@@ -8,12 +8,16 @@ import com.ipfl.data.domains.Node;
 public interface IpflDataService <T extends Node>{
 	
 	//Bulk Operations
-	List<T> createMultiple(List<T> t);
-	void deleteMultiple (List<T> t);
-	List<T> updateMultiple (List<T> t);
-	List<T> findAll();
+	List<T> saveAll(List<T> t);
+	void deleteAll(List<T> t);
+	List<T> updateAll(List<T> t);
+	List<?> findAll();
+	List<?> findByRelatedNode(String Nodename, String relationName);
+	
 	
 	//Single Operations
-	Optional<T> findById(long id);
-	Optional<T> findByName(String name);
+	Optional<?> findById(long id);
+	Optional<?> findByName(String name);
+	T save(T t);
+	void delete(T t);
 }
