@@ -13,14 +13,14 @@ import com.ipfl.data.domains.Player;
 @Repository
 public interface PlayerRepository extends Neo4jRepository<Player, Long> {
 	
-	public <T> Optional<T> findByName(String name, Class<T> t);
+	Optional<Player> findByName(String name, Class<Player> t);
 	
 	@Query("MATCH (n:`Player`) WHERE ID(n)={ id } WITH n RETURN n")
-	public  <T> Optional<T> findById(Long id, Class<T> t);
+	Optional<Player> findById(Long id, Class<Player> t);
 	
-	public  Optional<Player> findById(Long id);
+	Optional<Player> findById(Long id);
 	
-	public <T> List<T> findAllProjectedBy(Class<T> t);
+	List<Player> findAllProjectedBy(Class<Player> t);
 	
 	
 	/*@Query
@@ -38,5 +38,5 @@ public interface PlayerRepository extends Neo4jRepository<Player, Long> {
 
 	@Query
 	("match (p:Player)-[{relationName}]->(Node{name:{name}}) return p")
-	public <T> List<T> findByRelatedNode(@Param("name") String nodeName,@Param("relationName") String relationName);
+	List<Player> findByRelatedNode(@Param("name") String nodeName,@Param("relationName") String relationName);
 }

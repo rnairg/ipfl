@@ -4,6 +4,7 @@ package com.ipfl.data.domains;
 //import org.neo4j.ogm.annotation.GeneratedValue;
 //import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.Property;
+import org.neo4j.ogm.annotation.Relationship;
 import org.neo4j.ogm.annotation.RelationshipEntity;
 //import org.neo4j.ogm.annotation.StartNode;
 
@@ -11,11 +12,16 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
-@RelationshipEntity (type = "PLAYED_IN")
-public class PlayerStats extends Relationship<Player, Match> {
+
+public class PlayerStats extends Node {
 	
 	/*--------------Member Variables----------*/
-	
+
+	@Relationship(type="RELATES_TO")
+	private Player player;
+
+	@Relationship(type="GENERATED", direction=Relationship.INCOMING)
+	private Match match;
 	
 	@Property(name = "Runs")
 	private int runs;
@@ -29,22 +35,18 @@ public class PlayerStats extends Relationship<Player, Match> {
 	@Property(name = "Points")
 	private int points;
 
-	
-	
 	/*--------------Constructors----------*/
 	
 	public PlayerStats() {}
 	
 	@JsonCreator
 	public PlayerStats(@JsonProperty("Player") Player player, @JsonProperty("Match") Match match, int runs, int wickets, int catches) {
-		super(player, match);
 		this.runs = runs;
 		this.wickets = wickets;
 		this.catches = catches;
 	}
 	
 	public PlayerStats(@JsonProperty("Player") Player player, @JsonProperty("Match") Match match,int runs, int wickets, int catches, int points) {
-		super(player, match);
 		this.runs = runs;
 		this.wickets = wickets;
 		this.catches = catches;
@@ -53,15 +55,6 @@ public class PlayerStats extends Relationship<Player, Match> {
 
 	/*--------------Getters----------*/
 
-	
-	
-	public Player getPlayer() {
-		return super.getStartNode();
-	}
-
-	public Match getMatch() {
-		return super.getEndNode();
-	}
 
 	public int getRuns() {
 		return runs;

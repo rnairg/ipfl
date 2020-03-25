@@ -27,8 +27,12 @@ public class Player extends Person {
 	private List<FRole> frole;
 	
 	@JsonIgnoreProperties("Player")
-	@Relationship(type="PLAYED_IN")
+	@Relationship(type="PLAYED")
+	private List<Match> match;
+
+	@Relationship(type="RELATES_TO", direction = Relationship.INCOMING)
 	private List<PlayerStats> playerStats;
+
 	
 	/*--------------Constructors----------*/
 

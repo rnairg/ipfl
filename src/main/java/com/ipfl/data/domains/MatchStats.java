@@ -5,17 +5,23 @@ package com.ipfl.data.domains;
 //import org.neo4j.ogm.annotation.GeneratedValue;
 //import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.Property;
+import org.neo4j.ogm.annotation.Relationship;
 import org.neo4j.ogm.annotation.RelationshipEntity;
 //import org.neo4j.ogm.annotation.StartNode;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@RelationshipEntity (type="PLAYED")
-public class MatchStats extends Relationship<PLTeam, Match>{
+public class MatchStats extends Node{
 	
 	/*--------------Member Variables----------*/
-	
+
+	@Relationship(type = "GENERATED", direction = Relationship.INCOMING)
+	private Match match;
+
+	@Relationship(type="RELATES_TO")
+	private PLTeam plteam;
+
 	@Property(name = "Runs")
 	private int runs;
 	
@@ -31,8 +37,7 @@ public class MatchStats extends Relationship<PLTeam, Match>{
 	public MatchStats() {}
 	
 	@JsonCreator
-	public MatchStats(@JsonProperty("PLTeam") PLTeam plteam, @JsonProperty("Match") Match match, int runs, int wickets, float overs) {
-		super(plteam, match);
+	public MatchStats(int runs, int wickets, float overs) {
 		this.runs = runs;
 		this.wickets = wickets;
 		this.overs = overs;
@@ -43,14 +48,6 @@ public class MatchStats extends Relationship<PLTeam, Match>{
 	/*public Long getId() {
 		return id;
 	}*/
-
-	public PLTeam getPlTeam() {
-		return super.getStartNode();
-	}
-	
-	public Match getMatch() {
-		return super.getEndNode();
-	}
 
 	public int getRuns() {
 		return runs;

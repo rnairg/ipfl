@@ -11,14 +11,14 @@ import com.ipfl.data.domains.FantasyTeam;
 
 public interface FantasyTeamRepository extends Neo4jRepository<FantasyTeam, Long> {
 	
-	public <T> Optional<T> findByName(String name, Class<T> t);
+	Optional<FantasyTeam> findByName(String name, Class<FantasyTeam> t);
 	
-	public <T> Optional<T> findById(Long id, Class<T> t);
+	Optional<FantasyTeam> findById(Long id, Class<FantasyTeam> t);
 	
-	public <T> List<T> findAllProjectedBy(Class<T> t);
+	List<FantasyTeam> findAllProjectedBy(Class<FantasyTeam> t);
 	
 	@Query
 	("match (Player{name:{nodeName}})-[{relationName}]->(f:FantasyTeam) return f")
-	public <T> List<T> findByRelatedNode(@Param("nodeName") String nodeName, @Param("relationName") String relationName);
+	List<FantasyTeam> findByRelatedNode(@Param("nodeName") String nodeName, @Param("relationName") String relationName);
 	
 }

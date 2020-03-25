@@ -12,15 +12,15 @@ import com.ipfl.data.domains.PLTeam;
 
 public interface PLTeamRepository extends Neo4jRepository<PLTeam, Long> {
 	
-	public <T> Optional<T> findByName(String name, Class<T> t);
+	Optional<PLTeam> findByName(String name, Class<PLTeam> t);
 	
-	public <T> Optional<T> findById(Long id, Class<T> t);
+	Optional<PLTeam> findById(Long id, Class<PLTeam> t);
 	
-	public <T> List<T> findAllProjectedBy(Class<T> t);
+	List<PLTeam> findAllProjectedBy(Class<PLTeam> t);
 	
 	@Query
 	("match (p:Player{name:{nodeName})-[{relationName}]->(Node)}) return p")
-	public <T> List<T> findByRelatedNode(@Param("nodeName") String nodeName,@Param("relationName") String relationName);
+	List<PLTeam> findByRelatedNode(@Param("nodeName") String nodeName,@Param("relationName") String relationName);
 	
 	/*@Query
 	("match (a:PLTeam),(b:Match)"

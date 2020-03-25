@@ -19,10 +19,19 @@ public class Match extends Node {
 	private Date matchDate;
 	
 	@Relationship(type="PLAYED", direction= Relationship.INCOMING)
-	private List<PLTeam> plTeam;
-	
-	@Relationship(type="PLAYED_IN", direction= Relationship.INCOMING)
-	private List<Player> player;
+	private PLTeam plTeam1;
+
+	@Relationship(type="PLAYED", direction= Relationship.INCOMING)
+	private PLTeam plTeam2;
+
+	@Relationship(type="GENERATED")
+	private MatchStats matchStats1;
+
+	@Relationship(type="GENERATED")
+	private MatchStats matchStats2;
+
+	@Relationship(type="GENERATED")
+	private List<PlayerStats> playerStats;
 	
 	/*--------------Constructors----------*/
 	
@@ -34,12 +43,12 @@ public class Match extends Node {
 		return matchDate;
 	}
 
-	public List<PLTeam> getPlTeam() {
-		return plTeam;
+	public PLTeam getPlTeam1() {
+		return plTeam1;
 	}
-	
-	public List<Player> getPlayer() {
-		return player;
+
+	public PLTeam getPlTeam2() {
+		return plTeam2;
 	}
 
 }

@@ -10,16 +10,16 @@ import com.ipfl.data.domains.Match;
 
 public interface MatchRepository extends Neo4jRepository<Match, Long> {
 	
-	public Optional<Match> findByName(String name);
+	Optional<Match> findByName(String name);
 	
-	public <T> Optional<T> findByName(String name, Class<T> t);
+	Optional<Match> findByName(String name, Class<Match> t);
 	
-	public <T> Optional<T> findById(Long id, Class<T> t);
+	Optional<Match> findById(Long id, Class<Match> t);
 	
-	public <T> List<T> findAllProjectedBy(Class<T> t);
+	List<Match> findAllProjectedBy(Class<Match> t);
 	
 	@Query
 	("match (m:Match)-[{relationName}]->(Node{name:{nodeName}}) return n")
-	public <T> List<T> findByRelatedNode(@Param("nodeName") String nodeName,@Param("relationName") String relationName);
+	 List<Match> findByRelatedNode(@Param("nodeName") String nodeName,@Param("relationName") String relationName);
 
 }
